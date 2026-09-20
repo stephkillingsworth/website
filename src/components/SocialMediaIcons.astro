@@ -1,0 +1,71 @@
+---
+import github from "../assets/icons/github.svg";
+import gScholar from "../assets/icons/scholar.svg";
+import linkTree from "../assets/icons/linktree.svg";
+import mail from "../assets/icons/mail.svg";
+import cvIcon from "../assets/icons/curriculum-vitae.svg";
+import myCv from "../assets/docs/hhandika-cv.pdf";
+import cntl from "cntl";
+import { Image } from "astro:assets";
+
+const socialMediaClasses = cntl`
+  flex
+  justify-center
+  mt-4
+  space-x-4
+`;
+
+const socialMediaData = [
+  {
+    name: "GitHub",
+    url: "https://github.com/hhandika",
+    alt: "Open my GitHub profile",
+    icon: github,
+  },
+  {
+    name: "Google Scholar",
+    url: "https://scholar.google.com/citations?user=Jaub_M0AAAAJ&hl=en",
+    alt: "Open my Google Scholar profile",
+    icon: gScholar,
+  },
+  {
+    name: "LinkTree",
+    url: "https://linktr.ee/hhandika",
+    alt: "Open my LinkTree profile",
+    icon: linkTree,
+  },
+  {
+    name: "Mail",
+    url: "mailto:" + "hhandi1" + "@" + "lsu.edu",
+    alt: "Send me an email",
+    icon: mail,
+  },
+  {
+    name: "CV",
+    url: myCv,
+    alt: "Download my CV",
+    icon: cvIcon,
+  },
+];
+---
+
+<div class={socialMediaClasses}>
+  {
+    socialMediaData.map((item) => (
+      <div
+        class="tooltip tooltip-bottom"
+        data-tip={item.alt}
+        aria-label={item.name}
+      >
+        <a href={item.url} target="_blank" rel="noopener">
+          <Image
+            src={typeof item.icon === "string" ? item.icon : item.icon}
+            alt={item.alt}
+            width={36}
+            height={36}
+          />
+        </a>
+      </div>
+    ))
+  }
+</div>

@@ -1,0 +1,28 @@
+---
+import cntl from "cntl";
+
+const lineClasses = cntl`
+  space-y-2
+  mt-16
+  relative
+  before:absolute
+  before:inset-0
+  before:ml-5
+  before:-translate-x-px
+  md:before:ml-[8.75rem]
+  md:before:translate-x-0
+  before:h-full
+  before:w-0.5
+  before:bg-gradient-to-b
+  before:from-transparent
+  before:from-1%
+  before:via-porsche-600
+  before:via-80%
+  dark:before:via-porsche-300
+  before:to-transparent
+`;
+---
+
+<div class={lineClasses}>
+  <slot />
+</div>

@@ -1,0 +1,163 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PublicationList from "../components/cv/PublicationList.astro";
+import TeachingPortfolio from "../components/cv/TeachingPortfolio.astro";
+import OutreachAndServices from "../components/cv/OutreachAndServices.astro";
+import MainPage from "../components/MainPage.astro";
+import cntl from "cntl";
+
+const tabData = [
+  {
+    id: "publications",
+    label: "Publications",
+  },
+  {
+    id: "teaching",
+    label: "Teaching",
+  },
+  {
+    id: "outreach",
+    label: "Outreach",
+  },
+];
+
+const tabContainerClasses = cntl`
+  border
+  border-chetwode-200
+  dark:border-chetwode-900
+  flex
+  rounded-full
+  items-center
+  justify-center
+  gap-x-2
+  w-fit
+  mx-auto
+  mt-8
+  overflow-x-auto
+  scrollbar-hide
+`;
+
+const activeClass = cntl`
+  bg-chetwode-600
+  dark:bg-chetwode-300
+  text-white
+  dark:text-porsche-950
+  font-semibold
+`;
+
+const inactiveClass = cntl`
+  border-r
+  pr-4
+  border-chetwode-200
+  dark:border-chetwode-900
+  text-porsche-950
+  dark:text-porsche-50
+  hover:bg-chetwode-300
+  dark:hover:bg-chetwode-800
+  font-normal
+`;
+---
+
+<Layout title="Curriculum Vitae">
+  <MainPage>
+    <div class={tabContainerClasses}>
+      {
+        tabData.map(({ id, label }) => (
+          <button
+            class={`py-2 text-sm px-4 rounded-full transition-colors duration-300 tab-button ${
+              id === "publications" ? activeClass : inactiveClass
+            }`}
+            data-section={id}
+          >
+            {label}
+          </button>
+        ))
+      }
+    </div>
+    <div id="publications-section" class="">
+      <PublicationList />
+    </div>
+    <div id="teaching-section" class="hidden">
+      <TeachingPortfolio />
+    </div>
+    <div id="outreach-section" class="hidden">
+      <OutreachAndServices />
+    </div>
+  </MainPage>
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Script loaded");
+
+    function showSection(section: string) {
+      console.log("showSection called with:", section);
+
+      const sections = ["publications", "teaching", "outreach"];
+
+      sections.forEach((sec) => {
+        const element = document.querySelector(`#${sec}-section`);
+        console.log(`Section ${sec}:`, element);
+        if (element) {
+          element.classList.add("hidden");
+        }
+      });
+
+      const activeSection = document.querySelector(`#${section}-section`);
+      console.log("Active section:", activeSection);
+      if (activeSection) {
+        activeSection.classList.remove("hidden");
+      }
+
+      // Update button styles
+      document.querySelectorAll(".tab-button").forEach((btn) => {
+        btn.classList.remove(
+          "bg-chetwode-600",
+          "dark:bg-chetwode-300",
+          "text-white",
+          "dark:text-porsche-950",
+          "font-semibold",
+        );
+        btn.classList.add(
+          "text-porsche-950",
+          "dark:text-porsche-50",
+          "hover:bg-chetwode-300",
+          "dark:hover:bg-chetwode-800",
+          "font-normal",
+        );
+      });
+
+      const activeButton = document.querySelector(
+        `[data-section="${section}"]`,
+      );
+      if (activeButton) {
+        activeButton.classList.remove(
+          "text-chetwode-950",
+          "dark:text-porsche-50",
+          "hover:bg-chetwode-300",
+          "dark:hover:bg-chetwode-800",
+          "font-normal",
+        );
+        activeButton.classList.add(
+          "bg-chetwode-600",
+          "dark:bg-chetwode-300",
+          "text-white",
+          "dark:text-porsche-950",
+          "font-semibold",
+        );
+      }
+    }
+
+    // Add event listeners to all tab buttons
+    const buttons = document.querySelectorAll(".tab-button");
+    console.log("Found buttons:", buttons.length);
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const section = button.getAttribute("data-section");
+        console.log("Button clicked, section:", section);
+        if (section) showSection(section);
+      });
+    });
+  });
+</script>

@@ -1,0 +1,174 @@
+---
+import WrapButton from "../../layouts/WrapButton.astro";
+import DownloadButton from "./DownloadButton.astro";
+import SendMessageButton from "./SendMessageButton.astro";
+import leadingIcon from "../../assets/icons/paper.svg";
+import cntl from "cntl";
+
+interface PubButton {
+  author: string;
+  year: string;
+  title: string;
+  doi?: string;
+  pdfUrl?: string;
+  isRequest: boolean;
+  url?: string;
+  codeUrl?: string;
+}
+
+const { title, author, year, doi, pdfUrl, isRequest, url, codeUrl } =
+  Astro.props as PubButton;
+
+const openBtnClasses = cntl`
+  btn 
+  btn-active 
+  btn-link 
+  btn-md 
+  -mx-5
+`;
+
+const closeBtnClasses = cntl`
+  btn 
+  btn-circle 
+  btn-ghost 
+  btn-xs
+`;
+
+const snackbarClasses = cntl`
+  hidden
+  alert
+  fixed
+  bottom-4
+  max-w-xs
+  md:max-w-md
+  xl:max-w-4xl
+  rounded-2xl
+`;
+---
+
+<button id="open-snackbar" class={openBtnClasses}>
+  {year}
+</button>
+
+<div id="snackbar" role="alert" class={snackbarClasses}>
+  <img
+    src={leadingIcon.src}
+    alt="Analysis icon"
+    class="h-8 w-8 mx-auto"
+    aria-hidden="true"
+  />
+  <div class="text-start">
+    <h3 class="font-bold">{title}</h3>
+    <div class="text-xs">{author}. {year}</div>
+    {
+      (() => {
+        let activeGiven = false;
+        const active = () => {
+          if (activeGiven) return "";
+          activeGiven = true;
+          return "btn-active";
+        };
+
+        return (
+          (doi || url || codeUrl) && (
+            <WrapButton>
+              {doi && (
+                <>
+                  {pdfUrl &&
+                    (isRequest ? (
+                      <SendMessageButton
+                        text="Request PDF"
+                        url={pdfUrl}
+                        extendClass={active()}
+                      />
+                    ) : (
+                      <DownloadButton
+                        text="Download PDF"
+                        url={pdfUrl}
+                        isDownload="true"
+                        extendClass={active()}
+                      />
+                    ))}
+                  <DownloadButton
+                    text="Article"
+                    url={doi}
+                    extendClass={!pdfUrl ? active() : ""}
+                  />
+                </>
+              )}
+              {url && (
+                <>
+                  <DownloadButton
+                    text="Website"
+                    url={url}
+                    extendClass={!isRequest && !doi && !pdfUrl ? active() : ""}
+                  />
+                  {codeUrl && (
+                    <DownloadButton
+                      text="Code"
+                      url={codeUrl}
+                      extendClass={
+                        !isRequest && !doi && !pdfUrl && !url ? active() : ""
+                      }
+                    />
+                  )}
+                </>
+              )}
+              {!url && codeUrl && !doi && (
+                <DownloadButton
+                  text="Code"
+                  url={codeUrl}
+                  extendClass={!isRequest && !doi && !pdfUrl ? active() : ""}
+                />
+              )}
+            </WrapButton>
+          )
+        );
+      })()
+    }
+  </div>
+  <button id="close-snackbar" class={closeBtnClasses}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll("#open-snackbar").forEach((button) => {
+    button.addEventListener("click", () => {
+      const snackbar = button.nextElementSibling;
+      // if snackbar is not hidden, then hide it
+      document
+        .querySelectorAll("#snackbar:not(.hidden)")
+        .forEach((snackbar) => {
+          snackbar.classList.add("hidden");
+        });
+      snackbar?.classList.toggle("hidden");
+      // set time 10 seconds
+      setTimeout(() => {
+        snackbar?.classList.add("hidden");
+      }, 15000);
+    });
+  });
+
+  document.querySelectorAll("#close-snackbar").forEach((closeButton) => {
+    closeButton.addEventListener("click", () => {
+      document
+        .querySelectorAll("#snackbar:not(.hidden)")
+        .forEach((snackbar) => {
+          snackbar.classList.add("hidden");
+        });
+    });
+  });
+</script>

@@ -1,0 +1,16 @@
+---
+import cntl from "cntl";
+
+const textClasses = cntl`
+    text-lg 
+    text-pretty
+    textchetwode-700 
+    dark:chetwode-100
+    max-w-4xl
+    mx-auto
+`;
+---
+
+<p class={textClasses}>
+  <slot />
+</p>

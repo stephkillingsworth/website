@@ -1,0 +1,249 @@
+---
+import Layout from "../layouts/Layout.astro";
+import profilePhoto from "../assets/img/profile.webp";
+import Stats from "../components/Stats.astro";
+import rodentSvg from "../assets/icons/mammals.svg";
+import Background from "../components/Background.astro";
+import cntl from "cntl";
+import MainPage from "../components/MainPage.astro";
+import PageDescription from "../components/PageDescription.astro";
+import Image from "astro/components/Image.astro";
+import SocialMediaIcons from "../components/SocialMediaIcons.astro";
+// import handikaResearch from "../assets/img/handika-research.webp";
+
+const titleClasses = cntl`
+  font-serif
+  text-5xl
+  text-chetwode-950
+  dark:text-chetwode-50
+  mt-2
+`;
+
+const heroTextClasses = cntl`
+  mt-4
+  text-pretty
+  text-lg
+  text-slate-700
+  dark:text-slate-200
+  sm:text-xl/8
+`;
+
+const researchSentenceClasses = cntl`
+  font-serif
+  font-semibold
+  text-3xl
+  bg-gradient-to-r
+  from-porsche-600
+  to-chetwode-700
+  dark:from-porsche-300
+  dark:to-chetwode-200
+  bg-clip-text
+  text-transparent
+`;
+
+const sectionTitleClasses = cntl`
+  text-2xl
+  text-porsche-950
+  dark:text-porsche-50
+  text-center
+  m-4
+`;
+
+const statsGridClasses = cntl`
+  grid
+  bg-gradient-to-r
+  from-porsche-400
+  to-chetwode-200
+  dark:from-porsche-700
+  dark:to-chetwode-600
+  lg:grid-cols-3
+  gap-4
+  text-center
+  rounded-2xl
+  lg:rounded-full
+  mt-16
+  mx-8
+  lg:mx-24
+  animate-slide-in-bottom
+`;
+
+const keywordClasses = cntl`
+    border-2
+    border-chetwode-300
+    dark:border-chetwode-400
+    text-chetwode-700
+    dark:text-chetwode-400
+    rounded-full
+    py-1
+    px-4 
+    text-sm
+    font-semibold 
+`;
+
+const keywordList = [
+  "In situ diversification",
+  "Biodiversity Informatics",
+  "Artificial Intelligence",
+];
+
+const highlightedTextClasses = cntl`
+  bg-porsche-100
+  dark:bg-porsche-700
+  text-porsche-800
+  dark:text-porsche-50
+  px-2
+  pb-1
+  inline-block
+  -rotate-3
+`;
+
+const highlightedTextClasses2 = cntl`
+  bg-chetwode-100
+  dark:bg-chetwode-700
+  text-chetwode-800
+  dark:text-chetwode-50
+  px-2
+  pb-1
+  inline-block
+  rotate-2
+`;
+
+const buttonClasses = cntl`
+  mt-12
+  mx-auto
+  bg-chetwode-600
+  hover:bg-chetwode-900
+  text-chetwode-50
+  font-semibold
+  py-3
+  px-6
+  rounded-xl
+  shadow-lg
+  transition
+  duration-300
+  ease-in-out
+  w-fit
+`;
+---
+
+<Layout
+  title="Island small mammals and efficient, scalable biodiversity software"
+>
+  <MainPage>
+    <Background backgroundImage={rodentSvg} />
+    <div class="text-center item-center mt-8 md:mt-16">
+      <Image
+        class="block mx-auto rounded-full sm:mx-auto"
+        src={profilePhoto}
+        height={180}
+        width={180}
+        loading="lazy"
+        alt="Handika's profile"
+      />
+      <h1 class={titleClasses}>
+        Hi, I'm <strong>Heru Handika</strong>
+      </h1>
+      <PageDescription>
+        Post-Doctoral Associate · the University of Florida, USA
+      </PageDescription>
+      <div
+        class="flex flex-wrap justify-center gap-x-2 gap-y-2 sm:gap-x-4 px-2 mt-2"
+      >
+        {
+          keywordList.map((keyword) => (
+            <div class={keywordClasses}>
+              <p class="text-center">{keyword}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class={heroTextClasses}>
+        I study island small-mammal diversity and speciation, and build open,
+        scalable tools to enhance data integration, curation, and access for
+        biodiversity research. My work combines fieldwork in remote montane
+        forests, leveraging emerging AI technologies, and developing computer
+        programs that scale from mobile devices and personal computers, to
+        high-performance computing clusters.
+      </p>
+    </div>
+    <SocialMediaIcons />
+    <div class={statsGridClasses}>
+      <Stats title="Fieldwork" value="30" unit="expeditions" url="/fieldwork" />
+      <Stats
+        title="Specimen contribution"
+        value="8k"
+        unit="vouchers"
+        url="/fieldwork"
+      />
+      <Stats title="Code written" value="500K" unit="lines" url="/software" />
+    </div>
+    <div id="key-approach" class="mt-16 mx-auto text-center text-pretty">
+      <p class="text-porsche-950 dark:text-porsche-50 text-lg">
+        I describe my work as:
+      </p>
+      <p class={researchSentenceClasses}>
+        "An end-to-end approach to accelerate and broaden access to cutting-edge
+        collection-based evolutionary studies"
+      </p>
+    </div>
+    <div class="mt-16"></div>
+    <!-- <div class="flex flex-col lg:flex-row items-start justify-start gap-8 mt-4">
+      <div>
+        <Image
+          class="block
+      mx-auto
+      rounded-lg
+      shadow-lg"
+          src={handikaResearch}
+          alt="Handika's both code- and field-intensive research"
+          width={400}
+        />
+      </div> -->
+    <!-- <div class="text-left">
+        <h2 class="mb-2 text-xl text-porsche-950 dark:text-porsche-50">
+          It's code- and field-intensive research, involving many collaborators
+          and local communities.
+        </h2>
+      </div>
+    </div>
+    <div class="mt-16">
+      <h2
+        class="mb-4 font-semibold text-center text-2xl text-chetwode-950 dark:text-chetwode-50"
+      >
+        30+ expeditions and counting...
+      </h2>
+      <p></p>
+    </div> -->
+    <div class="mt-16">
+      <h2
+        class="mb-4 font-semibold text-center text-2xl text-chetwode-950 dark:text-chetwode-50"
+      >
+        Research Questions
+      </h2>
+      <h3 class={sectionTitleClasses}>
+        How do islands <span class={highlightedTextClasses}>generate</span> and
+        <span class={highlightedTextClasses2}>maintain</span> biodiversity?
+      </h3>
+      <div class={sectionTitleClasses}>
+        <h3>
+          How can we leverage <span class={highlightedTextClasses}
+            >emerging AI</span
+          > technologies to understand <span class={highlightedTextClasses2}
+            >complex</span
+          > biological systems?
+        </h3>
+      </div>
+      <div class={sectionTitleClasses}>
+        <h3>
+          How can we improve <span class={highlightedTextClasses}>access</span> to
+          <span class={highlightedTextClasses2}>cutting-edge</span> biodiversity studies?
+        </h3>
+      </div>
+    </div>
+    <div class={buttonClasses}>
+      <a href="/projects">
+        <p>Learn more</p>
+      </a>
+    </div>
+  </MainPage></Layout
+>

@@ -1,0 +1,63 @@
+---
+import WrapButton from "../../layouts/WrapButton.astro";
+import DownloadButton from "../buttons/DownloadButton.astro";
+import SendMessageButton from "../buttons/SendMessageButton.astro";
+import Authors from "./Authors.astro";
+
+interface JournalArticle {
+  id: string;
+  authors: string[];
+  year: string;
+  title: string;
+  journal: string;
+  pageVol: string;
+  doi?: string;
+  pdfUrl?: string;
+  altUrl?: string;
+  isRequest: boolean;
+}
+
+const {
+  id,
+  authors,
+  year,
+  title,
+  journal,
+  pageVol,
+  doi,
+  altUrl,
+  pdfUrl,
+  isRequest,
+} = Astro.props as JournalArticle;
+---
+
+<div class=`my-2 ${id}`>
+  <p class="text-chetwode-950 dark:text-chetwode-50">
+    <Authors authors={authors} />. {year}. {title}. <em>{journal}</em>, {
+      pageVol
+    }. {doi}
+  </p>
+  {
+    (doi || altUrl) && (
+      <WrapButton>
+        <DownloadButton text="View Article" url={doi ? doi : altUrl} />
+        {pdfUrl && isRequest ? (
+          <SendMessageButton
+            text="Request PDF"
+            url={pdfUrl}
+            extendClass="btn-active"
+          />
+        ) : (
+          pdfUrl && (
+            <DownloadButton
+              text="Download PDF"
+              url={pdfUrl}
+              isDownload="true"
+              extendClass="btn-active"
+            />
+          )
+        )}
+      </WrapButton>
+    )
+  }
+</div>

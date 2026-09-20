@@ -1,0 +1,28 @@
+---
+// This component is used to render the authors of a publication.
+// It highlights the author's name if it is the author of this website.
+// It also adds commas and "and" to separate the authors.
+// For two authors, it adds "and" between the authors.
+// For more than two authors, it adds commas between the authors
+// and Oxford comma before the last author.
+interface Props {
+  authors: string[];
+}
+
+const { authors } = Astro.props;
+---
+
+{
+  authors.map((part: string, index: number, array: string[]) => (
+    <>
+      {part === "Handika, H." ? (
+        <strong class="text-chetwode-700 dark:text-chetwode-400">{part}</strong>
+      ) : (
+        part
+      )}
+      {index < array.length - 2 && ", "}
+      {index === array.length - 2 && array.length > 2 && ", and "}
+      {index === array.length - 2 && array.length === 2 && " and "}
+    </>
+  ))
+}

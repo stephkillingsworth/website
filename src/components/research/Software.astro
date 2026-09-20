@@ -1,0 +1,111 @@
+---
+import Image from "astro/components/Image.astro";
+import Content from "../Content.astro";
+import SectionHead from "../Section.astro";
+import cntl from "cntl";
+import ProjectPubs from "../../layouts/ProjectPubs.astro";
+import PubButton from "../buttons/PubButton.astro";
+import nahpu from "../../assets/img/nahpu-preview.jpg";
+import Link from "../Link.astro";
+
+const firstParagraphClasses = cntl`
+  first-letter:text-7xl
+  first-letter:font-semibold
+  first-letter:mr-2
+  first-letter:float-left
+`;
+
+const spaceClasses = cntl`
+  mr-1
+`;
+---
+
+<div class="my-8">
+  <SectionHead
+    title="Inclusive, Open, and Accessible Software"
+    subtitle="Developing digital tools empowering new learners in evolutionary studies"
+  />
+  <Content>
+    <Image
+      src={nahpu}
+      alt="SEGUL app preview"
+      width={200}
+      class="rounded-xl float-right ml-4"
+    />
+    <p class={firstParagraphClasses}>
+      My software project spans a broad spectrum of collection-based
+      evolutionary studies, from data collection in the field (<Link
+        text="NAHPU"
+        url="https://nahpu.app"
+      />), species identification through innovative digital field guide (<Link
+        text="RINJA"
+        url="https://github.com/hhandika/rinja"
+      />), a phylogenomic pipeline (<Link
+        text="ULLAR"
+        url="https://github.com/hhandika/ullar"
+      />), genomic data wrangling and summarization (<Link
+        text="SEGUL"
+        url="https://segul.app"
+      />), to taxonomic database (<Link
+        text="MDD app, website, and tooling"
+        url="https://github.com/mammaldiversity/mdd_app"
+      />). My goal for this project is to develop software to improve the
+      efficiency, data integration, and accessibility of biodiversity research.
+      Additionally, I aim to reduce the ecological footprint of genomic studies
+      while allowing underfunded labs to benefit from the decreasing cost of
+      genomic sequencing. The development of the apps leverages emerging
+      technologies in software development (e.g., <Link
+        text="Rust"
+        url="https://www.rust-lang.org/"
+      />, <Link text="Flutter" url="https://flutter.dev/" />, and <Link
+        text="CI/CD"
+        url="https://en.wikipedia.org/wiki/CI/CD"
+      />
+      ). Especially for genomic studies, I take advantage of advancements in CPU technology
+      and <Link
+        text="heterogenous computing"
+        url="https://en.wikipedia.org/wiki/Heterogeneous_computing"
+      /> to accelerate data processing and minimize reliance on expensive and power-hungry
+      High-Performance Computing Clusters.
+    </p>
+    <div class="mt-4 mb-2 text-semibold">Publications:</div>
+    <ProjectPubs author="Handika et al.">
+      <PubButton
+        author="Handika, H., Moncrieff, A. E., Del-Rio G., Canton, R., Rutledge, S. L., Hernández-Canchola, G., Babb-Biernacki, S. J.  Chipps, A. S., Pérez-Amaya, N., Chornelia, A., Morales-Martínez, D. M., McCallum, Q., Thom, G., Esselstyn, J. A"
+        year="In prep"
+        title="NAHPU: A field cataloging application for efficient, repeatable, and inclusive collection-based evolutionary studies"
+        codeUrl="https://github.com/nahpu/nahpu"
+        url="https://nahpu.app"
+      />
+      <span class={spaceClasses}>,</span>
+      <PubButton
+        author="Handika, H., Del-Rio, G. D., Esselstyn, J. A"
+        year="In prep"
+        title="ULLAR: An ULtrafast, scaLable, Accessible, and Reproducible phylogenomic pipeline"
+        codeUrl="https://github.com/hhandika/ullar"
+      />
+    </ProjectPubs>
+    <ProjectPubs author="Handika and Esselstyn">
+      <PubButton
+        author="Handika, H. and Esselstyn, J. A"
+        year={2024}
+        title="SEGUL: Ultrafast, memory-efficient and mobile-friendly software for manipulating and summarizing phylogenomic datasets"
+        doi="https://doi.org/10.1111/1755-0998.13964"
+        pdfUrl="https://www.researchgate.net/publication/380125709_SEGUL_Ultrafast_memory-efficient_and_mobile-friendly_software_for_manipulating_and_summarizing_phylogenomic_datasets"
+        isRequest={true}
+        url="https://segul.app"
+        codeUrl="https://github.com/handika/segul"
+      />
+    </ProjectPubs>
+    <ProjectPubs author="Burgin et al.">
+      <PubButton
+        author="Burgin, C. J., Zijlstra, J. S., Becker, M. A., Handika, H., Widness, J., Liphardt, S., Huckaby, D. G., and Upham, N. S."
+        year={2025}
+        title="How many mammal species are there now? Updates and trends in taxonomic, nomenclatural, and geographic knowledge"
+        doi="https://doi.org/10.1093/jmammal/gyaf047"
+        url="https://mammaldiversity.org"
+        codeUrl="https://github.com/mammaldiversity/mammaldiversity"
+      />
+    </ProjectPubs>
+  </Content>
+</div>

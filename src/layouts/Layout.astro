@@ -1,0 +1,45 @@
+---
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="I study small mammal diversity and speciation on islands and develop efficient, scalable, and accessible software to advance biodiversity research."
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <!-- Google tag (gtag.js) -->
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-4SPVVHDKH7"
+      is:inline></script>
+    <script type="text/partytown" is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-4SPVVHDKH7");
+    </script>
+  </head>
+  <body class="bg-white dark:bg-black">
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+      <Header />
+      <slot />
+    </div>
+  </body>
+</html>

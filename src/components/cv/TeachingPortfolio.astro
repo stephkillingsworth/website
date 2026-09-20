@@ -1,0 +1,269 @@
+---
+import cntl from "cntl";
+import PageTitle from "../../components/PageTitle.astro";
+import PageSubtitle from "../../components/PageSubtitle.astro";
+import CardLayout from "../../layouts/CardLayout.astro";
+import Card from "../../components/Card.astro";
+import teachingIcon from "../../assets/icons/teaching.svg";
+import Background from "../../components/Background.astro";
+import tamboraGh from "../../assets/img/tambora-gh.webp";
+import tamboraGhFlyer from "../../assets/img/tambora-gh-flyer.webp";
+import { Image } from "astro:assets";
+
+const cardTitleClasses = cntl`
+  text-porsche-950
+  dark:text-porsche-50
+  text-xl
+`;
+
+const courseScheduleClasses = cntl`
+  font-serif
+  text-lg
+  text-porsche-800
+`;
+
+const cardDescriptonClasses = cntl`
+  mt-2
+  text-porsche-950
+  text-md
+`;
+
+const workshopImages = [
+  {
+    src: tamboraGh,
+    alt: "Heru Handika giving a GitHub workshop at Tambora Muda Indonesia",
+  },
+  {
+    src: tamboraGhFlyer,
+    alt: "Flyer for GitHub workshop at Tambora Muda Indonesia",
+  },
+];
+
+const imgClass = "rounded-lg shadow-lg h-80 w-auto object-contain";
+---
+
+<div class="mx-auto h-full max-w-5xl py-6 sm:py-16 lg:py-8">
+  <Background backgroundImage={teachingIcon} />
+  <PageTitle title="Teaching, Mentoring, & Workshops" />
+  <PageSubtitle subtitle="Courses Taught" />
+  <h3 class={cardTitleClasses}>Lousiana State University, USA</h3>
+  <CardLayout>
+    <Card
+      title="BIOL 2153 Principles of Genetics"
+      subtitle="Teaching assistant · Fall 2024"
+    >
+      <p class={cardDescriptonClasses}>
+        This course covers several topics, including Mendelian inheritance, gene
+        mapping, population genetics, and genomics. I taught recitation sections
+        and assisted with homework, exam preparation, and grading. My class size
+        was about 60 students divided into two sections.
+      </p>
+    </Card>
+    <Card title="BIOL 4141 Mammalogy" subtitle="Teaching assistant · Fall 2021">
+      <p class={cardDescriptonClasses}>
+        This course covers the evolution and systematics of mammals. I taught
+        lab section using specimens from the museum collection. My class size
+        was 16 students.
+      </p>
+    </Card>
+    <Card
+      title="BIOL 1209 Introduction to Biology"
+      subtitle="Teaching assistant · Spring 2021, 2025"
+      isLast={true}
+    >
+      <p class={cardDescriptonClasses}>
+        This course is an introduction to the principles of biology that covers
+        topics on ecology, evolution, and diversity. I taught lab section and
+        assisted with grading. My class size was about 50 students.
+      </p>
+    </Card>
+  </CardLayout>
+  <div class="mt-4">
+    <h3 class={cardTitleClasses}>Andalas University, Indonesia</h3>
+    <CardLayout>
+      <Card title="PAB125 Computer Application for Biology" isLast={true}>
+        <p class={courseScheduleClasses}>
+          Instructor &middot; 2<span class="align-super text-sm">nd</span>
+          semester 2012
+        </p>
+        <p class={cardDescriptonClasses}>
+          This course introduces students to computer applications in biology
+          that covers topics on basic computational statistics, geographic
+          information system (GIS), and scientific photography. I developed the
+          syllabus, taught lectures, and graded assignments. My class size was
+          70 students.
+        </p>
+      </Card>
+    </CardLayout>
+  </div>
+  <PageSubtitle subtitle="Workshops Taught" />
+
+  <CardLayout>
+    <div class="flex-wrap mb-4 flex gap-4">
+      {
+        workshopImages.map((image) => (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            class={imgClass}
+            loading="lazy"
+          />
+        ))
+      }
+    </div>
+    <Card
+      title="Molecular Analyses of Indonesian Mammals"
+      subtitle="Instructor · 18, 19, 25, and 26 May 2023"
+      description="Organized by Generasi Biologi Indonesia"
+    >
+      <p class={cardDescriptonClasses}>
+        This workshop covers an introduction to mammalian phylogenetics,
+        multi-locus DNA sequencing analyses, and genomic analyses using current
+        methods and software. The workshop was tailored with data from
+        Indonesian mammals, but the methodologies are applicable to studies
+        utilizing both Sanger and short-read sequencing data.
+      </p>
+    </Card>
+    <Card
+      title="Coding for Conservation: Integrating GitHub to Your Workflow"
+      subtitle="Instructor · 8-9 April 2023"
+      description="Organized by Tambora Muda, RLadies Jakarta, and RLadies Bogor"
+    >
+      <p class={cardDescriptonClasses}>
+        This workshop was designed to introduce students to version control and
+        collaborative coding using GitHub. I taught the basics of Git and
+        GitHub, including creating a repository, staging, making commits, and
+        creating pull requests. I also introduced students to advanced approach
+        to R dependency management and writing cross-platform code.
+      </p>
+    </Card>
+    <Card
+      title="Introduction to Phylogenetics"
+      subtitle="Instructor · 15 January 2020"
+      description="Organized by Graduate Student Association at Andalas University, Indonesia"
+      isLast={true}
+    >
+      <p class={cardDescriptonClasses}>
+        This workshop covers the fundamental concepts of phylogenetics,
+        including phylogenetic tree construction and interpretation. It also
+        introduces students to multi-locus DNA sequencing analyses using
+        IQ-TREE.
+      </p>
+    </Card>
+  </CardLayout>
+  <PageSubtitle subtitle="Student Mentees" />
+  <CardLayout>
+    <Card title="Fieldwork, survey design, scientific, and/or grant writing">
+      <ol class={cardDescriptonClasses}>
+        <li>
+          <strong>Fatimah</strong> (BS student in Biology, Andalas University, Indonesia).
+          2014–2017.
+          <p class="italic pb-2">
+            Received $5,300 from the Mohammed Bin Zayed Conservation Fund to
+            study the Mentawai Langurs.
+          </p>
+        </li>
+        <li>
+          <strong>Ahmad Mursyid</strong> (BS student in Biology, Andalas University,
+          Indonesia). 2012–2018.
+        </li>
+        <li>
+          <strong>Zulkurnia Irsaf</strong> (BS student in Biology, Tadulako University,
+          Indonesia). 2018–2020.
+        </li>
+        <li>
+          <strong>Tri S. Harapan</strong> (BS student in Biology, Andalas University,
+          Indonesia). 2020.
+        </li>
+        <li>
+          <strong>Fajar Alfitrian</strong> (BS student in Biology, Soedirman University,
+          Indonesia). 2023–2025.
+        </li>
+        <li>
+          <strong>Alfath Fanidya</strong> (MS student in Biology, Bogor Agricultural
+          University, Indonesia). 2023–now.
+          <p class="italic pb-2">
+            Received $13,000 from the Fonseca Species Conservation Fund to study
+            the Javan bamboo rats.
+          </p>
+        </li>
+        <li>
+          <strong>Lutfi S. Maulidiyah</strong> (BS student in Biology, University
+          of Lampung, Indonesia). 2023–2025.
+        </li>
+        <li>
+          <strong>Akbar F. Hilmi</strong> (BS student in Biology, University of Lampung,
+          Indonesia). 2023–2025.
+        </li>
+      </ol>
+    </Card>
+    <Card title="Specimen curation">
+      <ol class={cardDescriptonClasses}>
+        <li>
+          <strong>Ericka Boyden</strong> (BS student in Biology, Louisiana State
+          University). Fall 2019–Spring 2020.
+        </li>
+        <li>
+          <strong>Brittany E. Thames</strong> (BS student in Biology, Louisiana State
+          University). Spring 2019.
+        </li>
+        <li>
+          <strong>Emily A. Bowers</strong> (BS student in Biology, Louisiana State
+          University). Fall 2020–Spring 2021.
+        </li>
+      </ol>
+    </Card>
+    <Card title="Genomic Analyses">
+      <ol start="12" class={cardDescriptonClasses}>
+        <li>
+          <strong>Murky Mutchler</strong> (BS student in Biology, Louisiana State
+          University / PhD, the University of Chicago). 2021.
+          <p class="italic pb-2">
+            Won a poster award at the 2021 Wilson Ornithological Society
+            Meeting.
+          </p>
+        </li>
+        <li>
+          <strong>Ryan Zucker</strong> (BS student in Biology, Cornell University).
+          2024.
+        </li>
+      </ol>
+    </Card>
+    <Card title="Software Development">
+      <ol start="15" class={cardDescriptonClasses}>
+        <li>
+          <strong>Filipe Delgado</strong> (MS student in Computer Science, Georgia
+          Institute of Technology). Fall 2025.
+        </li>
+        <li>
+          <strong>Cody Henderson</strong> (MS student in Computer Science, Georgia
+          Institute of Technology). Fall 2025–now.
+        </li>
+        <li>
+          <strong>Lawrence Bohan Gan</strong> (MS student in Computer Science, Georgia
+          Institute of Technology). Fall 2025–now.
+        </li>
+        <li>
+          <strong>Aakanksha Jaiswal</strong> (MS student in Computer Science, Georgia
+          Institute of Technology). Fall 2025–now.
+        </li>
+        <li>
+          <strong>Kira L. Nichtawitz</strong> (BS student in Computer Science, University
+          of Florida). Fall 2025–now.
+        </li>
+        <li>
+          <strong>Julian D. Perez</strong> (BS student in Computer Engineering, University
+          of Florida). Fall 2025–now.
+        </li>
+        <li>
+          <strong>Ethan E. Wolfe</strong> (BS student in Data Science, University
+          of Florida). Fall 2025–now.
+        </li>
+        <li>
+          <strong>Zahara M. Shuemaker</strong> (BS student in Computer Science, University
+          of Florida). Fall 2025–now.
+        </li>
+      </ol>
+    </Card>
+  </CardLayout>
+</div>

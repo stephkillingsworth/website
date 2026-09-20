@@ -1,0 +1,155 @@
+---
+import PageTitle from "../components/PageTitle.astro";
+import Layout from "../layouts/Layout.astro";
+import codingIcon from "../assets/icons/coding.svg";
+import Background from "../components/Background.astro";
+import MainPage from "../components/MainPage.astro";
+import PageDescription from "../components/PageDescription.astro";
+import PageSubtitle from "../components/PageSubtitle.astro";
+import SoftwareLayout from "../layouts/SoftwareLayout.astro";
+import SoftwareCard from "../components/SoftwareCard.astro";
+import cntl from "cntl";
+import LinkCard from "../components/LinkCard.astro";
+import CodeStats from "../components/github/CodeStats.astro";
+
+const cardDescriptonClasses = cntl`
+  mt-2
+  text-porsche-950
+  text-md
+`;
+---
+
+<Layout title="Software">
+  <MainPage>
+    <Background backgroundImage={codingIcon} />
+    <PageTitle title="Software Development">
+      <PageDescription>
+        Quality software is essential for reproducibility, fostering
+        inclusivity, and advancing evolutionary studies. My software projects
+        focus on improving data collection, management, and integration in
+        field-based evolutionary studies and minimizing the technical
+        complexities of genomic analyses. I put ease of use at the center of the
+        software design process. The GUI software incorporates accessibility
+        features. I work toward crafting informative error handling and quality
+        documentation, and I am always open to feedback and collaboration. I
+        ensure cross-platform compatibility whenever feasible, including support
+        for Windows and mobile operating systems.
+      </PageDescription>
+    </PageTitle>
+    <CodeStats />
+    <PageSubtitle subtitle="Software Projects" />
+
+    <SoftwareLayout>
+      <SoftwareCard
+        title="SEGUL"
+        subtitle="A cross-platform phylogenomic tool"
+        platform={[
+          "Desktop GUI",
+          "Mobile app",
+          "Command-line app",
+          "Python package",
+          "Rust crate",
+        ]}
+        repo="https://github.com/hhandika/segul"
+        docs="https://www.segul.app/"
+        install="https://www.segul.app/docs/installation/overview"
+      >
+        <p class={cardDescriptonClasses}>
+          We develop SEGUL (SEquence and Genomic UtiLities) to address the need
+          for a high-performance and accessible phylogenomic tool. It features a
+          growing list of high-performance, memory-efficient solutions for
+          genomic data exploration, cleaning, filtering, and conversion tasks.
+          We designed SEGUL to handle large-scale phylogenomic datasets
+          involving thousands of loci and hundreds of samples. Additionally, it
+          is capable of handling small Sanger sequences effectively. It scales
+          from smartphones, tablets, and personal computers to high-performance
+          computing clusters. It is available as a command-line app, mobile and
+          desktop GUI, and packages for Rust and Python. Using the SEGUL library
+          in other languages is also possible using the Rust interface, such as
+          in R using <LinkCard
+            text="extendr"
+            url="https://extendr.github.io/"
+          />. It is a practical solution to typical phylogenomic data analyses
+          and a proof of concept for scalable, cross-platform genomic software.
+        </p>
+      </SoftwareCard>
+    </SoftwareLayout>
+    <div class="mt-4">
+      <SoftwareLayout>
+        <SoftwareCard
+          title="NAHPU"
+          subtitle="A cross-platform field catalog for natural history collections"
+          platform={["Mobile app", "Desktop app"]}
+          repo="https://github.com/hhandika/nahpu"
+          docs="https://www.nahpu.app/"
+          install="https://www.nahpu.app/docs/installation"
+        >
+          <p class={cardDescriptonClasses}>
+            The NAHPU project is a collaborative effort to develop a digital
+            field catalog for natural history collection. We designed it to
+            streamline data collection from fieldwork to the museum database. It
+            minimizes information loss and lack of integration between
+            specimens, collecting efforts, and derivative data (e.g.,
+            photographs and sound recording). We aim to foster international
+            collaboration and improved reproducibility through rich, consistent
+            data features and multi-language support. NAHPU features real-time
+            statistics to keep track of specimen records to aid in making
+            decisions in collecting efforts and avoiding over-sampling. The app
+            is in beta. Several field teams tested NAHPU for fieldwork in
+            Brazil, Colombia, Indonesia, Mexico, and the United States. It
+            supports data collection for ornithology and mammalogy, with plans
+            to extend support to other taxa.
+          </p>
+        </SoftwareCard>
+      </SoftwareLayout>
+    </div>
+    <div class="mt-4">
+      <SoftwareLayout>
+        <SoftwareCard
+          title="ULLAR"
+          subtitle="An Ultrafast, scaLable, Accessible, and Reproducible pipeline for phylogenomics"
+          platform={["Command-line app", "Python package"]}
+          repo="https://github.com/hhandika/ullar"
+          docs="https://github.com/hhandika/ullar"
+          install="https://github.com/hhandika/ullar"
+        >
+          <p class={cardDescriptonClasses}>
+            ULLAR is currently in the beta development stage. It aims to create
+            a lightweight and scalable pipeline for phylogenomic studies. It
+            requires minimal learning and omits manual config generation and
+            shell scripting. The pipeline uses Rust, which has no runtime
+            dependencies, is memory-safe, and efficiently uses computing
+            resources. In addition to Linux and macOS, typically supported
+            operating systems for bioinformatics, ULLAR will also run natively
+            on Windows for part of the pipeline, allowing more efficient access
+            to hardware than using the Windows Subsystem for Linux.
+          </p>
+        </SoftwareCard>
+      </SoftwareLayout>
+      <div class="mt-4">
+        <SoftwareLayout>
+          <SoftwareCard
+            title="MDD app"
+            subtitle="A mobile and desktop app for the ASM's Mammal Diversity Database"
+            platform={["Mobile app", "Desktop app"]}
+            repo="https://github.com/mammaldiversity/mdd_app"
+            docs="https://github.com/mammaldiversity/mdd_app"
+            install="https://github.com/mammaldiversity/mdd_app"
+          >
+            <p class={cardDescriptonClasses}>
+              The American Society of Mammalogists' Mammal Diversity Database
+              (MDD) app is a mobile and desktop application I developed as part
+              of <LinkCard
+                text="the MDD curation team"
+                url="https://www.mammaldiversity.org/about.html"
+              />. It is currently in beta. The app allows offline access,
+              advanced search, and user-selected export functions for the
+              database. We aim to simplify access to MDD data when access to the
+              internet is limited.
+            </p>
+          </SoftwareCard>
+        </SoftwareLayout>
+      </div>
+    </div>
+  </MainPage></Layout
+>

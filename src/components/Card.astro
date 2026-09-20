@@ -1,0 +1,36 @@
+---
+import cntl from "cntl";
+
+interface CardProps {
+  title: string;
+  subtitle: string;
+  description?: string;
+  isLast?: boolean;
+}
+
+const { title, subtitle, description, isLast } = Astro.props as CardProps;
+
+const titleClasses = cntl`
+  font-semibold
+  text-porsche-950
+  text-lg
+`;
+
+const subtitleClasses = cntl`
+  font-serif
+  text-lg
+  text-porsche-800
+`;
+
+const descriptionClasses = cntl`
+  text-sm
+  text-porsche-800
+`;
+---
+
+<div class={!isLast ? "mb-4" : ""}>
+  <p class={titleClasses}>{title}</p>
+  <p class={subtitleClasses}>{subtitle}</p>
+  {description && <p class={descriptionClasses}>{description}</p>}
+  <slot />
+</div>

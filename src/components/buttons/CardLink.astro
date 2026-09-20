@@ -1,0 +1,16 @@
+---
+import cntl from "cntl";
+
+const { text, url } = Astro.props;
+
+const linkClasses = cntl`
+  text-chetwode-800
+  text-semibold
+  text-md
+  underline
+  hover:text-chetwode-950
+  mr-4
+`;
+---
+
+<a class={linkClasses} href={url} target="_blank" rel="noopener">{text}</a>

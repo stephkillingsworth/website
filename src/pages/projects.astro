@@ -1,0 +1,189 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageTitle from "../components/PageTitle.astro";
+import researchIcon from "../assets/icons/research.svg";
+import Background from "../components/Background.astro";
+import MainPage from "../components/MainPage.astro";
+import PageDescription from "../components/PageDescription.astro";
+import cntl from "cntl";
+import Speciation from "../components/research/Speciation.astro";
+import Software from "../components/research/Software.astro";
+import Ai from "../components/research/Ai.astro";
+import Others from "../components/research/Others.astro";
+
+const tabData = [
+  {
+    id: "speciation",
+    label: "Speciation",
+  },
+  {
+    id: "software",
+    label: "Software",
+  },
+  {
+    id: "ai",
+    label: "AI",
+  },
+  {
+    id: "others",
+    label: "Others",
+  },
+];
+
+const tabContainerClasses = cntl`
+  border
+  border-chetwode-200
+  dark:border-chetwode-900
+  flex
+  rounded-full
+  items-center
+  justify-center
+  w-fit
+  mx-auto
+  mt-8
+  gap-x-2
+  overflow-x-auto
+  scrollbar-hide
+`;
+
+const activeClass = cntl`
+  bg-chetwode-600
+  dark:bg-chetwode-300
+  text-white
+  dark:text-porsche-950
+  font-semibold
+`;
+
+const inactiveClass = cntl`
+  border-r
+  pr-4
+  border-chetwode-200
+  dark:border-chetwode-900
+  text-porsche-950
+  dark:text-porsche-50
+  hover:bg-chetwode-300
+  dark:hover:bg-chetwode-800
+  font-normal
+`;
+---
+
+<Layout title="Research Projects">
+  <MainPage>
+    <Background backgroundImage={researchIcon} />
+    <PageTitle title="Research Projects">
+      <PageDescription>
+        My research integrates fieldwork, natural history collections, genomics,
+        and the development of digital tools to address speciation,
+        biogeography, and conservation questions. In particular, it centers on
+        identifying patterns of small mammal diversity and understanding
+        speciation processes within and across islands in the Indo-Australian
+        Archipelago. I have also engaged in projects focusing on other taxa and
+        in different regions. Most of the tools I develop are taxon-agnostic. My
+        collaborative work involves more than a dozen people in some projects. I
+        strive to make research using natural history collections and genomic
+        data accessible to students and researchers with limited technical
+        knowledge and access to computing resources.
+      </PageDescription>
+    </PageTitle>
+    <div class={tabContainerClasses}>
+      {
+        tabData.map((tab) => (
+          <button
+            class={`tab-button px-4 py-2 rounded-full transition-colors duration-300 ${inactiveClass} ${tab.id === "speciation" ? activeClass : ""}`}
+            data-section={tab.id}
+          >
+            {tab.label}
+          </button>
+        ))
+      }
+    </div>
+    <div id="speciation-section" class="mt-8">
+      <Speciation />
+    </div>
+    <div id="software-section" class="mt-8 hidden">
+      <Software />
+    </div>
+    <div id="ai-section" class="mt-8 hidden">
+      <Ai />
+    </div>
+    <div id="others-section" class="mt-8 hidden">
+      <Others />
+    </div>
+  </MainPage>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("Script loaded");
+
+      function showSection(section: string) {
+        console.log("showSection called with:", section);
+
+        const sections = ["speciation", "software", "ai", "others"];
+
+        sections.forEach((sec) => {
+          const element = document.querySelector(`#${sec}-section`);
+          console.log(`Section ${sec}:`, element);
+          if (element) {
+            element.classList.add("hidden");
+          }
+        });
+
+        const activeSection = document.querySelector(`#${section}-section`);
+        console.log("Active section:", activeSection);
+        if (activeSection) {
+          activeSection.classList.remove("hidden");
+        }
+
+        // Update button styles
+        document.querySelectorAll(".tab-button").forEach((btn) => {
+          btn.classList.remove(
+            "bg-chetwode-600",
+            "dark:bg-chetwode-300",
+            "text-white",
+            "dark:text-porsche-950",
+            "font-semibold",
+          );
+          btn.classList.add(
+            "text-porsche-950",
+            "dark:text-porsche-50",
+            "hover:bg-chetwode-300",
+            "dark:hover:bg-chetwode-800",
+            "font-normal",
+          );
+        });
+
+        const activeButton = document.querySelector(
+          `[data-section="${section}"]`,
+        );
+        if (activeButton) {
+          activeButton.classList.remove(
+            "text-chetwode-950",
+            "dark:text-porsche-50",
+            "hover:bg-chetwode-300",
+            "dark:hover:bg-chetwode-800",
+            "font-normal",
+          );
+          activeButton.classList.add(
+            "bg-chetwode-600",
+            "dark:bg-chetwode-300",
+            "text-white",
+            "dark:text-porsche-950",
+            "font-semibold",
+          );
+        }
+      }
+
+      // Add event listeners to all tab buttons
+      const buttons = document.querySelectorAll(".tab-button");
+      console.log("Found buttons:", buttons.length);
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const section = button.getAttribute("data-section");
+          console.log("Button clicked, section:", section);
+          if (section) showSection(section);
+        });
+      });
+    });
+  </script>
+</Layout>

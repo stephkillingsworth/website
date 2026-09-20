@@ -1,0 +1,109 @@
+---
+import Background from "../../components/Background.astro";
+import MainPage from "../../components/MainPage.astro";
+import Layout from "../../layouts/Layout.astro";
+import rodentSvg from "../../assets/icons/mammals.svg";
+import profilePhoto from "../../assets/img/profile.webp";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Island small mammals and inclusive biodiversity software">
+  <MainPage>
+    <Background backgroundImage={rodentSvg} />
+    <div class="text-center item-center mt-8 md:mt-16">
+      <Image
+        class="block mx-auto rounded-full sm:mx-auto"
+        src={profilePhoto}
+        height={180}
+        width={180}
+        decoding="async"
+        loading="lazy"
+        alt="Handika's profile"
+      />
+      <h1
+        class="font-serif text-3xl text-chetwode-950 dark:text-chetwode-50 mt-4"
+      >
+        In Situ Diversification of Insular Rodents: from Efficient Software to
+        Integrative Empirical Approaches
+      </h1>
+      <p
+        class="mt-4 text-pretty text-lg text-slate-700 dark:text-slate-200 sm:text-xl/8"
+      >
+        Doctoral dissertation defense at Louisiana State University
+      </p>
+      <p
+        class="mt-4 text-pretty text-lg text-slate-700 dark:text-slate-200 sm:text-xl/8"
+      >
+        by <span class="font-bold text-xl font-serif">Heru Handika</span>
+      </p>
+      <div
+        class="mt-4 text-pretty text-lg text-slate-700 dark:text-slate-200 sm:text-xl/8"
+      >
+        <p>Date: April 28th, 2025</p>
+        <p>Time: 09:00 AM - 10:30 AM (CDT)</p>
+        <p>Location: LSUMNS Public Exhibit, Murphy J. Foster Hall</p>
+      </div>
+      <div>
+        <a
+          href="https://www.icloud.com/invites/0c7P-rPOTZC9HwA-NcbXS_Myg"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block mt-4 px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          RSVP for Zoom
+        </a>
+      </div>
+      <div
+        class="mx-auto mt-8 mb-8 w-full max-w-2xl rounded-lg p-4 dark:bg-gray-800 flex justify-center"
+      >
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d203323.44845184524!2d-91.4528058694887!3d30.42092197661473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8626a7006dd8f1a7%3A0x352842fb2291792c!2sMurphy%20J.%20Foster%20Hall!5e0!3m2!1sen!2sus!4v1745201780536!5m2!1sen!2sus"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div>
+        <p class="text-2xl font-serif mb-2 font-semibold">Abstract</p>
+        <p class="text-lg text-pretty text-slate-700 dark:text-slate-200">
+          In situ diversification is pivotal in shaping species diversity in
+          large, topographically complex islands. However, our understanding of
+          in situ diversification is limited by inefficient, complicated
+          software requiring significant bioinformatics skills and, in many
+          taxa, an unresolved taxonomy. In my dissertation, I combined the
+          development of high-performance, user-friendly software with
+          integrative morphological and molecular approaches to understand how a
+          large, topographically complex island, such as Sulawesi, generates
+          species diversity. My software development project resulted in SEGUL,
+          a high-performance, cross-platform phylogenomic software featuring
+          efficient solutions for common phylogenomic tasks, such as alignment
+          summary and manipulation. My approach laid a foundation for scalable
+          genomic software to advance genomic research and aid in teaching where
+          access to computing resources is lacking. Using a combination of
+          large-scale sampling across Sulawesi and an integrative approach
+          combining mitochondrial genes, nuclear exons, ultra-conserved elements
+          (UCEs), and morphological studies of external and skull features, I
+          determined the species boundaries within the Bunomys division, the
+          largest group of murine rodents in Sulawesi, Indonesia. I tested
+          whether Sulawesi’s known areas of endemism, mountain isolation, or a
+          combination of various factors promoted diversification of the group.
+          My phylogenetic analyses yielded several novel results, including the
+          underestimation of species diversity in the Bunomys division, the
+          paraphyly of the genus <i>Taeromys</i>, and greater genetic divergence
+          among montane species than in lowland taxa. A complex interplay of
+          paleo-islands, tectonic plates, and mountain formation may have
+          promoted the diversification of the group in Sulawesi. Support for
+          Sulawesi’s Areas of Endemism paradigm was mixed. Morphological data
+          indicated that divergent populations within the genus <i>Frateromys</i
+          >
+          found in the molecular studies represent a distinct species. Overall, my
+          dissertation highlights the significance of fieldwork, integrative empirical
+          studies, and innovative technological applications in unraveling the complexities
+          of biodiversity.
+        </p>
+      </div>
+    </div>
+  </MainPage>
+</Layout>

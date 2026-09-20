@@ -1,0 +1,25 @@
+---
+import cntl from "cntl";
+
+const { backgroundImage } = Astro.props;
+
+const backgroundClasses = cntl`
+    absolute
+    inset-x-0
+    -top-20
+    -z-10
+    transform-gpu
+    overflow-hidden
+    blur-xl
+    opacity-20
+    mt-16
+`;
+---
+
+<div class={backgroundClasses} aria-hidden="true">
+  <img
+    src={backgroundImage.src}
+    alt="Rodent illustration"
+    class="block mx-auto sm:w-2/3"
+  />
+</div>

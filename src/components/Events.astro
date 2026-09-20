@@ -1,0 +1,13 @@
+---
+interface Events {
+  organizer: string;
+  title: string;
+  date: string;
+}
+
+const { organizer, title, date } = Astro.props as Events;
+---
+
+<p class="text-chetwode-950 dark:text-chetwode-50">
+  {organizer}: "<i>{title}</i>", {date}.
+</p>

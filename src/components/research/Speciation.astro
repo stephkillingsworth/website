@@ -1,0 +1,142 @@
+---
+import Image from "astro/components/Image.astro";
+import Content from "../Content.astro";
+import SectionHead from "../Section.astro";
+import cntl from "cntl";
+import lenomys from "../../assets/img/lenomys-meyeri.jpg";
+import ProjectPubs from "../../layouts/ProjectPubs.astro";
+import PubButton from "../buttons/PubButton.astro";
+
+const firstParagraphClasses = cntl`
+  first-letter:text-7xl
+  first-letter:font-semibold
+  first-letter:mr-2
+  first-letter:float-left
+`;
+
+const spaceClasses = cntl`
+  mr-1
+`;
+---
+
+<div>
+  <SectionHead
+    title="Small Mammal Diversity & Speciation"
+    subtitle="Understanding patterns that generate species diversity within a complex island system"
+  />
+  <Content>
+    <Image
+      src={lenomys}
+      alt="Lenomys meyeri"
+      width={340}
+      class="rounded-xl float-left mr-4 mt-2"
+    />
+    <p class={firstParagraphClasses}>
+      For centuries, the Indo-Australian Archipelago (IAA) has been recognized
+      as a complex, fascinating island system for studying speciation and
+      testing evolutionary hypotheses. During the Pleistocene, the islands on
+      the Sunda Shelf—such as Sumatra, Java, and Borneo— were connected as a
+      continuous landmass. In contrast, Sulawesi were formed from separate
+      islands. The isolated mountains on these islands promote other
+      opportunities for speciation. We conduct extensive fieldwork, perform
+      genomic studies, and describe undocumented species as necessary.
+    </p>
+    <p class="mt-2">
+      I primarily focus on the in-situ diversification of rodents (the <i
+        >Bunomys</i
+      > species group) in Sulawesi. I aim to improve phylogenetic resolution and understand
+      how the island's geological history has shaped the group's diversity. Ultimately,
+      I aim to deepen our understanding of speciation on a large, isolated island
+      like Sulawesi and aid conservation efforts by improving our knowledge of species
+      diversity and endemism.
+    </p>
+  </Content>
+  <div class="mt-4 mb-2 text-semibold text-lg">Publications:</div>
+  <ProjectPubs author="Handika et. al.">
+    <PubButton
+      title="An island of islands: complex gene tree discordance and local endemism on a recent, rapid rodent radiation on Sulawesi"
+      year="In prep"
+      author="Handika, H., Rowe, K.C., Achmadi, A.S., Zulkurnia Irsaf, Swanson, M. T., and Esselstyn, J.A"
+    />
+    <span class={spaceClasses}>,</span>
+    <PubButton
+      title="A new species of Frateromys from the Northern Peninsula of Sulawesi, Indonesia"
+      year="In prep"
+      author="Handika, H., Rowe, K.C., Achmadi, A.S., Swanson, M. T., and Esselstyn, J.A"
+    />
+    <span class={spaceClasses}>,</span>
+    <PubButton
+      author="Handika, H., Achmadi, A.S., Esselstyn, J.A., and Rowe, K.C"
+      year="2021"
+      title="Molecular and morphological systematics of the Bunomys division (Rodentia: Muridae), an endemic radiation on Sulawesi"
+      doi="https://doi.org/10.1111/zsc.12460"
+      pdfUrl="https://www.researchgate.net/publication/346459790_Molecular_and_morphological_systematics_of_the_Bunomys_division_Rodentia_Muridae_an_endemic_radiation_on_Sulawesi?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InByb2ZpbGUiLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlQ29udGVudCJ9fQ"
+      isRequest={true}
+    />
+  </ProjectPubs>
+  <ProjectPubs author="Demos et. al.">
+    <PubButton
+      author="Demos, T.C., Achmadi, A.S., Handika, H., Rowe, K.C. and Esselstyn, J.A"
+      year={2017}
+      title="A new species of shrew (Soricomorpha: Crocidura) from Java, Indonesia: possible character displacement despite interspecific gene flow"
+      doi="https://doi.org/10.1093/jmammal/gyw183"
+      pdfUrl="https://esselstyn.github.io/publications/2017/Demos-2017.pdf"
+    />
+    <span class={spaceClasses}>,</span>
+    <PubButton
+      author="Demos, T.C., Achmadi, A.S., Giarla, T.C., Handika, H., Rowe, K.C. and Esselstyn, J.A"
+      year={2016}
+      title="Local endemism and within‐island diversification of shrews illustrate the importance of speciation in building Sundaland mammal diversity"
+      doi="https://doi.org/10.1111/mec.13820"
+      pdfUrl="https://esselstyn.github.io/publications/2016/Demos-2016.pdf"
+    />
+  </ProjectPubs>
+  <ProjectPubs author="Esselstyn et. al.">
+    <PubButton
+      author="Esselstyn, J.A., Achmadi, A.S., Handika, H. , Swanson, M. T., Giarla, T.C. and Rowe, K.C"
+      year="2021"
+      title="Fourteen new, endemic species of shrew (genus Crocidura) from Sulawesi reveal a spectacular island radiation"
+      doi="https://doi.org/10.1206/0003-0090.454.1.1"
+      pdfUrl="https://bioone.org/journalArticle/Download?urlId=10.1206%2F0003-0090.454.1.1"
+    />
+    <span class={spaceClasses}>,</span>
+    <PubButton
+      author="Esselstyn, J.A., Achmadi, A.S., Handika, H., Giarla, T.C. and Rowe, K.C"
+      year="2019"
+      title="A new climbing shrew from Sulawesi highlights the tangled taxonomy of an endemic radiation"
+      doi="https://doi.org/10.1093/jmammal/gyz077"
+      pdfUrl="https://esselstyn.github.io/publications/2019/Esselstyn-2019.pdf"
+    />
+    <span class={spaceClasses}>,</span>
+    <PubButton
+      author="Esselstyn, J.A., Achmadi, A.S., Handika, H. and Rowe, K.C"
+      year="2015"
+      title="A hog-nosed shrew rat (Rodentia: Muridae) from Sulawesi Island, Indonesia"
+      doi="https://doi.org/10.1093/jmammal/gyv093"
+      pdfUrl="https://esselstyn.github.io/publications/2015/Esselstyn-2015.pdf"
+    />
+  </ProjectPubs>
+  <ProjectPubs author="Giarla et. al.">
+    <PubButton
+      author="Giarla, T. C., Achmadi, A.S., Fabre, P. H., Handika, H., Chipps, A. S., Swanson, M.T., Nations, J. A., Morni, M. A., William-Dee, J., Inayah, N., Jayanti, E. D., Nurdin, M.R.T.J., Griffin, K. E., Khan, F. A. A., Heaney, L. R., Rowe, K. C., Esselstyn, J. A"
+      year="In press"
+      title="Systematics and historical biogeography of Crunomys and Maxomys (Muridae: Murinae), with the description of a new species from Sulawesi and new genus-level classification"
+      journal="Journal of Mammalogy"
+    />
+  </ProjectPubs>
+  <ProjectPubs author="Nations et. al.">
+    <PubButton
+      author="Nations, J. A., Handika, H., Mursyid, A., Butsa, R. D., Apandi, Achmadi, A. S. Esselstyn, J. A"
+      year={2024}
+      title="Three new species of shrew (Soricidae: Crocidura) from West Sumatra, Indonesia: elevational and morphological divergence in syntopic sister taxa"
+      doi="https://doi.org/10.1093/jmammal/gyad126"
+      pdfUrl="https://www.researchgate.net/publication/377726198_Three_new_shrews_Soricidae_Crocidura_from_West_Sumatra_Indonesia_elevational_and_morphological_divergence_in_syntopic_sister_taxa"
+    />
+  </ProjectPubs>
+  <div
+    class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+    aria-hidden="true"
+  >
+    <br class="" />
+  </div>
+</div>

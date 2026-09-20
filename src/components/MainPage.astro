@@ -1,0 +1,16 @@
+---
+import cntl from "cntl";
+
+const mainPageClasses = cntl`
+  mx-auto 
+  max-w-5xl 
+  py-6 
+  sm:py-16
+  lg:py-8
+  min-h-screen
+`;
+---
+
+<main>
+  <div class={mainPageClasses}><slot /></div>
+</main>

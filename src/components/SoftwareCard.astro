@@ -1,0 +1,57 @@
+---
+import cntl from "cntl";
+import CardLink from "./buttons/CardLink.astro";
+
+interface CardProps {
+  title: string;
+  subtitle: string;
+  platform: string[];
+  repo: string;
+  docs: string;
+  install: string;
+}
+
+const { title, subtitle, platform, repo, docs, install } =
+  Astro.props as CardProps;
+
+const titleClasses = cntl`
+  font-semibold
+  text-porsche-950
+  text-lg
+`;
+
+const subtitleClasses = cntl`
+  font-serif
+  text-lg
+  text-porsche-800
+`;
+
+const techonolgyClasses = cntl`
+    bg-porsche-100 
+    text-porsche-800 
+    rounded-full 
+    px-2 
+    py-1 
+    text-sm 
+    mr-2 
+    mb-2
+`;
+---
+
+<div id="software-card">
+  <p class={titleClasses}>{title}</p>
+  <p class={subtitleClasses}>{subtitle}</p>
+  <div class="flex flex-wrap mt-2">
+    {
+      platform?.map((tech: string) => (
+        <span class={techonolgyClasses}>{tech}</span>
+      ))
+    }
+    <slot />
+    <p class="flex mt-4">
+      <CardLink text="Code" url={repo} />
+      <CardLink text="Docs" url={docs} />
+      <CardLink text="Install" url={install} />
+    </p>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+---
+import WrapButton from "../../layouts/WrapButton.astro";
+import DownloadButton from "../buttons/DownloadButton.astro";
+
+interface PopularArticle {
+  publisher: string;
+  title: string;
+  dateVolume: string;
+  url?: string;
+  pdfUrl?: string;
+}
+
+const { publisher, title, url, pdfUrl, dateVolume } =
+  Astro.props as PopularArticle;
+---
+
+<div class="my-2">
+  <p class="text-chetwode-950 dark:text-chetwode-50">
+    {publisher}: "<i>{title}</i>", {dateVolume}.
+  </p>
+  <WrapButton>
+    {url && <DownloadButton text="View Article" url={url} />}
+    {
+      pdfUrl && (
+        <DownloadButton
+          text="Download PDF"
+          url={pdfUrl}
+          isDownload="true"
+          extendClass="btn-active"
+        />
+      )
+    }
+  </WrapButton>
+</div>

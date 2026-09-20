@@ -1,0 +1,77 @@
+---
+import RodentIcon from "../components/svg/RodentIcon.astro";
+import cntl from "cntl";
+
+const { date, title, subtitle } = Astro.props;
+
+const IconDateClasses = cntl`
+  flex
+  items-center
+  space-x-4
+  md:space-x-2
+  md:space-x-reverse
+`;
+
+const IconClasses = cntl`
+  flex
+  items-center
+  justify-center
+  w-12
+  h-12
+  rounded-full
+  bg-porsche-200
+  md:order-1
+`;
+
+const dateClasses = cntl`
+  font-serif
+  text-lg
+  text-porsche-800
+  dark:text-porsche-100
+  md:w-28
+`;
+
+const cardClasses = cntl`
+  order-1
+  bg-porsche-200
+  rounded-xl
+  px-6
+  py-4
+  ml-14
+  md:ml-44
+`;
+
+const titleClasses = cntl`
+  font-bold
+  text-porsche-950
+  text-xl
+`;
+
+const subtitleClasses = cntl`
+  mb-2
+  text-porsche-950
+  text-md
+`;
+---
+
+<div class="relative">
+  <div class="md:flex items-center md:space-x-4">
+    <div class={IconDateClasses}>
+      <div class={IconClasses}>
+        <RodentIcon fill="#391d11" />
+      </div>
+      <p class={dateClasses}>
+        {date}
+      </p>
+    </div>
+  </div>
+  <div class={cardClasses}>
+    <h3 class={titleClasses}>
+      {title}
+    </h3>
+    <h2 class={subtitleClasses}>
+      {subtitle}
+    </h2>
+    <slot />
+  </div>
+</div>
